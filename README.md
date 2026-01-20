@@ -11,7 +11,7 @@
    - Data Scientist (Nhóm phân tích): Chịu trách nhiệm xử lý dữ liệu để đưa ra insight và mô hình dự báo.
 
 ### 4. VẤN ĐỀ KINH DOANH (BUSINESS PROBLEM)
-   Client đặt câu hỏi: "Tôi muốn mở shop bán hàng thời trang online. Nhưng tôi không biết yếu tố nào quyết định sự thành công (uy tín) của một shop? Liệu việc trả lời tin nhắn nhanh, có ảnh hưởng đến việc khách hàng đánh giá 5 sao cho tôi không?"
+   Client đặt câu hỏi: "Tôi muốn mở shop bán hàng online. Nhưng tôi không biết yếu tố nào quyết định sự thành công (uy tín) của một shop? Liệu việc trả lời tin nhắn nhanh, có ảnh hưởng đến việc khách hàng đánh giá 5 sao cho tôi không?"
 
 ### 5. MỤC TIÊU KHOA HỌC DỮ LIỆU (DATA SCIENCE GOALS)
    - Phân tích khám phá (EDA): Tìm ra mối tương quan giữa các biến số (Tốc độ phản hồi, Vị trí shop, Số lượng hàng...) với biến mục tiêu (Rating Star, Lượng người theo dõi).
