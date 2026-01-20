@@ -60,7 +60,7 @@ def k_means(data: list):
         elif len(matches) == 1:
             print(f"=> Cụm này CÓ THỂ là Shop Thời Trang (Khớp: {', '.join(matches)})")
         else:
-            print("❌ => Cụm này KHÔNG PHẢI Shop Thời Trang")
+            print("=> Cụm này KHÔNG PHẢI Shop Thời Trang")
 
     print("-" * 50)
     return kmeans.labels_.tolist()
