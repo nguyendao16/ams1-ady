@@ -1,33 +1,33 @@
-### PHẦN 1: MÔ TẢ BÀI TOÁN GỐC (BUSINESS UNDERSTANDING)
+# PHẦN 1: MÔ TẢ BÀI TOÁN GỐC (BUSINESS UNDERSTANDING)
 
-# 1. TÊN DỰ ÁN
+### 1. TÊN DỰ ÁN
    Phân tích và Dự đoán Yếu tố Thành công của Gian hàng Thương mại Điện tử (E-commerce Shop Analysis)
 
-# 2. BỐI CẢNH (CONTEXT)
+### 2. BỐI CẢNH (CONTEXT)
    Thị trường thương mại điện tử (Shopee, Lazada...) đang cạnh tranh khốc liệt. Các nhà bán hàng mới (New Sellers) thường gặp khó khăn trong việc định hình chiến lược vận hành để đạt được sự uy tín và thu hút khách hàng ngay từ đầu.
 
-# 3. CÁC BÊN LIÊN QUAN (STAKEHOLDERS)
+### 3. CÁC BÊN LIÊN QUAN (STAKEHOLDERS)
    - Client (Khách hàng): Nhà đầu tư cá nhân hoặc chủ doanh nghiệp nhỏ chuẩn bị mở shop thời trang online.
    - Data Scientist (Nhóm phân tích): Chịu trách nhiệm xử lý dữ liệu để đưa ra insight và mô hình dự báo.
 
-# 4. VẤN ĐỀ KINH DOANH (BUSINESS PROBLEM)
+### 4. VẤN ĐỀ KINH DOANH (BUSINESS PROBLEM)
    Client đặt câu hỏi: "Tôi muốn mở shop bán hàng thời trang online. Nhưng tôi không biết yếu tố nào quyết định sự thành công (uy tín) của một shop? Liệu việc trả lời tin nhắn nhanh, có ảnh hưởng đến việc khách hàng đánh giá 5 sao cho tôi không?"
 
-# 5. MỤC TIÊU KHOA HỌC DỮ LIỆU (DATA SCIENCE GOALS)
+### 5. MỤC TIÊU KHOA HỌC DỮ LIỆU (DATA SCIENCE GOALS)
    - Phân tích khám phá (EDA): Tìm ra mối tương quan giữa các biến số (Tốc độ phản hồi, Vị trí shop, Số lượng hàng...) với biến mục tiêu (Rating Star, Lượng người theo dõi).
    - Phân cụm (Clustering): Nhóm các shop có đặc điểm tương đồng để định vị phân khúc.
    - Dự báo (Prediction): Xây dựng mô hình ước tính độ uy tín dựa trên thông số vận hành.
 
 
-### PHẦN 2: HƯỚNG DẪN KỸ THUẬT (README)
+# PHẦN 2: HƯỚNG DẪN KỸ THUẬT (README)
 
 ## PROJECT: E-commerce Shop Success Analysis (ASM1)
 
-# I. GIỚI THIỆU
+### I. GIỚI THIỆU
    Dự án này sử dụng dữ liệu lịch sử các shop trên sàn TMĐT để giúp người bán mới tối ưu hóa vận hành. 
    Mục tiêu: Trả lời câu hỏi về sự ảnh hưởng của "Response Rate" và "Location" tới "Rating".
 
-# II. CẤU TRÚC THƯ MỤC DỰ ÁN (ASM1/)
+### II. CẤU TRÚC THƯ MỤC DỰ ÁN (ASM1/)
    
    1. Dữ liệu:
       - shop_detail.csv: File dữ liệu gốc chứa thông tin các shop.
@@ -46,12 +46,12 @@
       - .gitignore: Cấu hình git.
       - README.txt: File hướng dẫn này.
 
-# III. YÊU CẦU HỆ THỐNG
+### III. YÊU CẦU HỆ THỐNG
    - Ngôn ngữ: Python >= 3.11.0
    - Thư viện cần thiết: pandas, numpy, scikit-learn, matplotlib, seaborn, jupyter.
    - Cài đặt: pip install pandas numpy scikit-learn matplotlib seaborn
 
-# IV. HƯỚNG DẪN SỬ DỤNG
+### IV. HƯỚNG DẪN SỬ DỤNG
 
    Bước 1: Khám phá dữ liệu
    - Mở file 'shop.ipynb'.
@@ -64,7 +64,7 @@
      + Phân nhóm các shop (K-Means Clustering).
      + Huấn luyện mô hình dự đoán Rating.
 
-# V. PHƯƠNG PHÁP TIẾP CẬN (METHODOLOGY)
+### V. PHƯƠNG PHÁP TIẾP CẬN (METHODOLOGY)
    1. Data Preprocessing: Xử lý giá trị thiếu (NaN), chuẩn hóa dữ liệu số, mã hóa dữ liệu văn bản.
    2. Clustering: Sử dụng K-Means để tìm ra các nhóm shop đặc trưng (VD: Nhóm shop VIP, Nhóm shop mới...).
    3. Modeling: Sử dụng các thuật toán học có giám sát để dự đoán Rating dựa trên:
@@ -73,5 +73,5 @@
       - item_count (Số lượng sản phẩm)
       - join_time (Thâm niên)
 
-# VI. KẾT QUẢ MONG ĐỢI
+### VI. KẾT QUẢ MONG ĐỢI
    Cung cấp bằng chứng định lượng để khuyên Client nên tập trung vào việc cải thiện tốc độ phản hồi hay mở rộng kho hàng để đạt được đánh giá 5 sao.
