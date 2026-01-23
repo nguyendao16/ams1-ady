@@ -1,4 +1,16 @@
-# PHẦN 1: MÔ TẢ BÀI TOÁN GỐC (BUSINESS UNDERSTANDING)
+# Nhóm 5: 
+### HE2001148 - Đào Khôi Nguyên: Xử lý dữ liệu, Mô hình phân loại K-means
+### HE200237 - Nguyễn Quốc Bảo: Phân tích và đánh giá dữ liệu
+### HE200456 - Nguyễn Xuân Khang: Mô hình dự đoán Linear Regession
+### HE200566 - Đỗ Trọng Quốc: Phân tích và đánh giá dữ liệu
+
+## Bài báo cáo này có 3 phần
+### PHẦN 1: MÔ TẢ BÀI TOÁN GỐC
+### PHẦN 2: HƯỚNG DẪN KỸ THUẬT
+### PHẦN 3: QUÁ TRÌNH & KẾT QUẢ
+### File Chính chứa toàn bộ code: shop.ipynb
+
+# PHẦN 1: MÔ TẢ BÀI TOÁN GỐC
 
 ### 1. TÊN DỰ ÁN
    Phân tích và Dự đoán Yếu tố Thành công của Gian hàng Thương mại Điện tử (E-commerce Shop Analysis)
@@ -19,7 +31,7 @@
    - Dự báo (Prediction): Xây dựng mô hình ước tính độ uy tín dựa trên thông số vận hành.
 
 
-# PHẦN 2: HƯỚNG DẪN KỸ THUẬT (README)
+# PHẦN 2: HƯỚNG DẪN KỸ THUẬT
 
 ## PROJECT: E-commerce Shop Success Analysis (ASM1)
 
@@ -76,10 +88,49 @@
 ### VI. KẾT QUẢ MONG ĐỢI
    Cung cấp bằng chứng định lượng để khuyên Client nên tập trung vào việc cải thiện tốc độ phản hồi hay mở rộng kho hàng để đạt được đánh giá 5 sao.
 
-### PHẦN 3: KẾT QUẢ
+## PHẦN 3: QUÁ TRÌNH & KẾT QUẢ
 
-## Kết quả sau khi lọc dữ liệu:
+### Xử lý dữ liệu:
+**Nhìn qua dữ liệu**
+<img width="1795" height="704" alt="image" src="https://github.com/user-attachments/assets/f973499c-6573-4f44-a9ad-e2a112801c9a" />
+**Loại bỏ các cột không cần thiết**
+<img width="1777" height="375" alt="image" src="https://github.com/user-attachments/assets/e55352f0-b98c-4bc8-ab4e-b80b2aeb7d86" />
+**Kiểm tra số lượng Null của các cột và kiểm tra kiểu dữ liệu, nhận thấy rằng có các giá trị Null và kiểu dữ liệu của các cột đã chính xác**
+<img width="1765" height="513" alt="image" src="https://github.com/user-attachments/assets/3ba36477-a344-455c-81d3-e68de0a0541b" />
+**Xử lý các giá trị Null, suy đoán rằng các cột Null là các shop ảo do đa phần Null ở 'description', 'rating_star', 'response_rate', đồng thời xoá các shop không bán item nào (item_count = 0)**
+<img width="1774" height="536" alt="image" src="https://github.com/user-attachments/assets/fb46ec12-ed66-4da6-9254-e0a297eebdbd" />
+**Kết quả**
 <img width="1772" height="601" alt="image" src="https://github.com/user-attachments/assets/8c63276b-3550-48a2-957e-2f706ff97b53" />
-Đảm bảo rằng các cột đã được đưa về đúng kiểu giữ liệu:
 <img width="1791" height="523" alt="image" src="https://github.com/user-attachments/assets/1d896281-c91b-4b31-bfe8-51a102c8a629" />
+
+## Mô hình Phân cụm K-means (k_means.py)
+
+### 1. Mục tiêu áp dụng
+Dữ liệu thu thập từ sàn thương mại điện tử (TMĐT) có đặc điểm là hỗn tạp, bao gồm rất nhiều ngành hàng khác nhau (Sách, Điện tử, Thú cưng, Thời trang...).
+
+Thay vì gán nhãn thủ công (tốn kém thời gian và nhân lực), nhóm sử dụng thuật toán học máy không giám sát **K-Means Clustering** kết hợp với kỹ thuật **Xử lý ngôn ngữ tự nhiên (NLP)** để tự động gom nhóm và định danh các shop dựa trên phần mô tả (`description`).
+
+### 2. Phương pháp kỹ thuật (Methodology)
+Quy trình thực hiện trong file `k_means.py` bao gồm 3 bước chính:
+
+**Bước 1: Vector hóa (Text Vectorization)**
+* **Làm sạch dữ liệu:** Nhóm đã xây dựng một bộ từ điển `stop_words` tùy chỉnh (bao gồm tiếng Việt và các ký tự đặc biệt, các từ chung chung như `...`, `và`, `là`, `https`, `shopee`...) để loại bỏ nhiễu.
+* **Vector hóa:** Sử dụng kỹ thuật **TF-IDF (Term Frequency - Inverse Document Frequency)** để chuyển đổi dữ liệu văn bản (cột `description`) thành các vector số học.
+* **Cấu hình:** Sử dụng tham số `ngram_range=(1, 2)` để mô hình hiểu được cả cụm từ (ví dụ: "áo thun", "thời trang") thay vì chỉ từ đơn lẻ, giúp tăng độ chính xác ngữ nghĩa.
+
+**Bước 2: Phân cụm (Clustering)**
+* Sử dụng thuật toán **K-Means** từ thư viện `scikit-learn`.
+* **Số lượng cụm (K):** Sau quá trình thử nghiệm với các giá trị K khác nhau, nhóm quyết định chọn **K=3**. Lý do là dữ liệu thực tế thường phân tách thành 3 nhóm lớn: 
+    1. Nhóm shop nước ngoài/mô tả tiếng Anh.
+    2. Nhóm shop tạp hóa/ngành hàng khác (Sách, Sim thẻ...).
+    3. Nhóm shop Thời trang chuyên biệt (Mục tiêu).
+
+**Bước 3: Định danh cụm tự động (Cluster Labeling)**
+* Đây là cải tiến quan trọng của nhóm so với phương pháp thông thường. Sau khi phân cụm, thuật toán sẽ trích xuất **Top Keywords** (các từ khóa xuất hiện nhiều nhất và có trọng số cao nhất) của từng cụm.
+* Hệ thống tự động so khớp Top Keywords này với bộ từ điển chuyên ngành `clothing_keywords` (gồm: *thời trang, fashion, brand, áo, quần, váy...*).
+* Cụm nào chứa nhiều từ khóa trùng khớp nhất sẽ được hệ thống **tự động gán nhãn là Shop Thời trang** để đưa vào mô hình dự đoán.
+
+**Kết quả thực nghiệm**
+Sau khi chạy mô hình trên tập dữ liệu đã làm sạch, thuật toán K-Means đã phân tách dữ liệu thành 3 cụm với các đặc điểm từ khóa rõ rệt:
+<img width="1282" height="533" alt="image" src="https://github.com/user-attachments/assets/6d5b0dd1-66d6-44f8-9f26-c4c78ea879f7" />
 
