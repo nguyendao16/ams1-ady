@@ -75,3 +75,11 @@
 
 ### VI. KẾT QUẢ MONG ĐỢI
    Cung cấp bằng chứng định lượng để khuyên Client nên tập trung vào việc cải thiện tốc độ phản hồi hay mở rộng kho hàng để đạt được đánh giá 5 sao.
+
+### PHẦN 3: KẾT QUẢ
+
+## Kết quả sau khi lọc dữ liệu:
+<img width="1772" height="601" alt="image" src="https://github.com/user-attachments/assets/8c63276b-3550-48a2-957e-2f706ff97b53" />
+Đảm bảo rằng các cột đã được đưa về đúng kiểu giữ liệu:
+<img width="1791" height="523" alt="image" src="https://github.com/user-attachments/assets/1d896281-c91b-4b31-bfe8-51a102c8a629" />
+
