@@ -33,51 +33,37 @@
 
 # PHẦN 2: HƯỚNG DẪN KỸ THUẬT
 
-## PROJECT: E-commerce Shop Success Analysis (ASM1)
+## PROJECT: Optimizing E-commerce Reputation (ASM1)
 
 ### I. GIỚI THIỆU
    Dự án này sử dụng dữ liệu lịch sử các shop trên sàn TMĐT để giúp người bán mới tối ưu hóa vận hành. 
    Mục tiêu: Trả lời câu hỏi về sự ảnh hưởng của "Response Rate" và "Location" tới "Rating".
 
 ### II. CẤU TRÚC THƯ MỤC DỰ ÁN (ASM1/)
-   
    1. Dữ liệu:
       - shop_detail.csv: File dữ liệu gốc chứa thông tin các shop.
 
-   2. Notebooks (Dành cho chạy thử nghiệm và báo cáo):
-      - shop.ipynb: Phân tích dữ liệu (EDA), làm sạch dữ liệu và trực quan hóa cơ bản.
-      - prediction.ipynb: Quy trình chính để chạy các mô hình máy học.
-
-   3. Source Code (Modules):
+   2. Notebooks:
+      - shop.ipynb: Phân tích dữ liệu (EDA), làm sạch dữ liệu và trực quan hóa cơ bản, chứa toàn bộ phần code toàn project.
+      
+   3. Modules:
       - text_processer.py: Xử lý dữ liệu văn bản (tên shop, mô tả...).
       - k_means.py: Thuật toán phân cụm shop.
-      - modeling.py: Xây dựng và huấn luyện mô hình (Regression/Classification).
+      - modeling.py: Xây dựng phân tích dữ liệu.
       - evaluation.py: Đánh giá độ chính xác của mô hình.
+      - prediction.ipynb: Quy trình chính để chạy các mô hình máy học.
 
    4. Khác:
       - .gitignore: Cấu hình git.
-      - README.txt: File hướng dẫn này.
+      - README.txt: Bài báo cáo này.
 
 ### III. YÊU CẦU HỆ THỐNG
    - Ngôn ngữ: Python >= 3.11.0
    - Thư viện cần thiết: pandas, numpy, scikit-learn, matplotlib, seaborn, jupyter.
    - Cài đặt: pip install pandas numpy scikit-learn matplotlib seaborn
 
-### IV. HƯỚNG DẪN SỬ DỤNG
-
-   Bước 1: Khám phá dữ liệu
-   - Mở file 'shop.ipynb'.
-   - Chạy các cell để xem phân bố dữ liệu, biểu đồ tương quan giữa Tốc độ phản hồi và Rating.
-
-   Bước 2: Chạy mô hình (Phân cụm & Dự đoán)
-   - Mở file 'prediction.ipynb'.
-   - Notebook này sẽ gọi các hàm từ các file .py (text_processer, k_means, modeling) để thực hiện:
-     + Tiền xử lý dữ liệu thô.
-     + Phân nhóm các shop (K-Means Clustering).
-     + Huấn luyện mô hình dự đoán Rating.
-
 ### V. PHƯƠNG PHÁP TIẾP CẬN (METHODOLOGY)
-   1. Data Preprocessing: Xử lý giá trị thiếu (NaN), chuẩn hóa dữ liệu số, mã hóa dữ liệu văn bản.
+   1. Data Preprocessing: Xử lý giá trị thiếu (Nall), chuẩn hóa dữ liệu số, mã hóa dữ liệu văn bản.
    2. Clustering: Sử dụng K-Means để tìm ra các nhóm shop đặc trưng (VD: Nhóm shop VIP, Nhóm shop mới...).
    3. Modeling: Sử dụng các thuật toán học có giám sát để dự đoán Rating dựa trên:
       - response_rate (Tỷ lệ phản hồi)
