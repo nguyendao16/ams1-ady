@@ -175,3 +175,54 @@ Sau khi chạy mô hình trên tập dữ liệu đã làm sạch, thuật toán
    - Mặt hàng là yếu tố ảnh hưởng mạnh nhất
    - Tốc độ phản hồi chỉ hỗ trợ, không quyết định
    - Vị trí địa lý không phải lợi thế cạnh tranh
+
+
+## Mô hình Dự đoán Linear Regression (prediction.ipynb)
+
+### 1. Mục tiêu áp dụng
+
+Mô hình **Linear Regression (Hồi quy tuyến tính)** được nhóm xây dựng nhằm mục đích **dự báo tương lai** cho Client.
+
+Cụ thể, mô hình trả lời câu hỏi định lượng: *"Nếu tôi mở một shop với 50 sản phẩm, đạt được 100 đánh giá tốt và duy trì tỷ lệ phản hồi 90%, thì tôi có thể kỳ vọng đạt được bao nhiêu người theo dõi (Follower)?"*
+
+### 2. Phương pháp kỹ thuật
+
+**Bước 1: Lựa chọn đặc trưng (Feature Selection & Engineering)**
+Dựa trên kết quả EDA, nhóm chọn ra 4 biến số đầu vào (Independent Variables) có khả năng tác động đến lượng Follower:
+
+* `rating_good`: Số lượng đánh giá tốt (Đại diện cho Uy tín).
+* `item_count`: Số lượng sản phẩm (Đại diện cho Quy mô).
+* `response_rate`: Tỷ lệ phản hồi (Đại diện cho Dịch vụ).
+* `shop_age_days`: Thời gian hoạt động (Đại diện cho Thâm niên - *Được tính từ cột `mtime*`).
+
+**Bước 2: Xử lý dữ liệu lệch (Log Transformation)**
+Đây là kỹ thuật quan trọng nhất trong mô hình này. Dữ liệu thực tế cho thấy sự chênh lệch cực lớn giữa các shop (có shop 10 follow, có shop 1 triệu follow). Phân phối dữ liệu bị lệch phải (Right-skewed) khiến mô hình hồi quy tuyến tính hoạt động kém hiệu quả.
+
+Giải pháp của nhóm là áp dụng kỹ thuật **Log Transformation** (`np.log1p`) cho các biến số lớn (`follower_count`, `rating_good`, `item_count`).
+
+* *Tác dụng:* Chuyển đổi phân phối dữ liệu về dạng chuẩn (hình chuông), giúp mô hình "học" được quy luật công bằng hơn giữa shop lớn và shop nhỏ.
+
+**Bước 3: Huấn luyện & Đánh giá**
+Sử dụng thư viện `scikit-learn` để huấn luyện mô hình Linear Regression trên tập dữ liệu đã chia (80% Train - 20% Test).
+
+### 3. Kết quả mô hình
+
+**Độ chính xác (Model Performance)**
+
+* **R-squared (Hệ số xác định): ~0.654 (65.4%)**
+* *Ý nghĩa:* Mô hình giải thích được hơn 65% sự biến động của lượng Follower dựa trên các chỉ số vận hành. Với dữ liệu hành vi người dùng trên mạng xã hội (vốn nhiều biến số ngẫu nhiên), đây là mức độ tin cậy **TỐT**.
+
+**Mức độ tác động của từng yếu tố (Feature Importance)**
+Dựa trên hệ số hồi quy, nhóm rút ra mức độ ảnh hưởng như sau:
+
+1. **Rating Good (Hệ số ~0.62):** Yếu tố quan trọng nhất. Tăng 1% lượng đánh giá tốt sẽ giúp lượng Follower tăng trưởng ~0.62%.
+2. **Item Count (Hệ số ~0.08):** Quan trọng thứ hai. Đa dạng hóa danh mục sản phẩm giúp thu hút khách hàng, nhưng tác động kém hơn nhiều so với uy tín.
+3. **Response Rate:** Tác động dương nhưng rất nhỏ. Việc trả lời nhanh là điều kiện cần, nhưng không phải yếu tố then chốt để khách hàng bấm "Follow".
+
+### 4. Kết luận & Lời khuyên cho Client
+
+Từ kết quả của mô hình dự đoán, nhóm đưa ra chiến lược tối ưu cho Client:
+
+* **Chiến lược "Săn Review 5 sao" (Ưu tiên số 1):** Vì `rating_good` là biến số có trọng số lớn nhất, Client cần tập trung nguồn lực vào việc xin đánh giá từ khách hàng. Đây là con đường ngắn nhất để tăng Follower.
+* **Mở rộng danh mục sản phẩm:** Duy trì đăng sản phẩm đều đặn giúp tăng độ phủ của shop.
+* **Thiết lập KPI thực tế:** Thay vì đoán mò, Client có thể sử dụng mô hình này để tính toán KPI cụ thể cho shop mới.
