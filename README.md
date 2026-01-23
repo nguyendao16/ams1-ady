@@ -157,12 +157,14 @@ Sau khi chạy mô hình trên tập dữ liệu đã làm sạch, thuật toán
        + Nhưng không quyết định hoàn toàn rating
 -> Chất lượng sản phẩm/dịch vụ vẫn là yếu tố cốt lõi
 <img width="775" height="659" alt="Screenshot 2026-01-23 105426" src="https://github.com/user-attachments/assets/dce29d0f-010b-4818-acf2-d5bd5b73416b" />
+
 * So sánh theo khu vực
   - Rating trung bình:
        + Hà Nội ≈ TP.HCM ≈ 4,9
   - Chênh lệch không đáng kể
 -> Địa điểm mở shop không tạo lợi thế rõ ràng về đánh giá (rating)
 <img width="961" height="555" alt="Screenshot 2026-01-23 105524" src="https://github.com/user-attachments/assets/fe91ce35-24fd-47aa-b1d7-8e6dd77e9eda" />
+
 *Phân tích theo ngành hàng
    - Thời trang~61,900 follower
    - Bán lẻ / Thương mại tổng hợp:~54,700 follower
