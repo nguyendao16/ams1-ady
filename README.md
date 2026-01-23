@@ -165,7 +165,7 @@ Sau khi chạy mô hình trên tập dữ liệu đã làm sạch, thuật toán
 -> Địa điểm mở shop không tạo lợi thế rõ ràng về đánh giá (rating)
 <img width="961" height="555" alt="Screenshot 2026-01-23 105524" src="https://github.com/user-attachments/assets/fe91ce35-24fd-47aa-b1d7-8e6dd77e9eda" />
 
-*Phân tích theo ngành hàng
+* Phân tích theo ngành hàng
    - Thời trang~61,900 follower
    - Bán lẻ / Thương mại tổng hợp:~54,700 follower
    - Không rõ ngành: ~33,400 follower
