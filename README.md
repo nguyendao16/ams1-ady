@@ -120,3 +120,56 @@ Quy trình thực hiện trong file `k_means.py` bao gồm 3 bước chính:
 Sau khi chạy mô hình trên tập dữ liệu đã làm sạch, thuật toán K-Means đã phân tách dữ liệu thành 3 cụm với các đặc điểm từ khóa rõ rệt:
 <img width="1282" height="533" alt="image" src="https://github.com/user-attachments/assets/6d5b0dd1-66d6-44f8-9f26-c4c78ea879f7" />
 
+## Phân tích và đánh giá dữ liệu (modleing.py và evaluation.py)
+
+### 1. Mục tiêu
+   - Xác định các yếu tố ảnh hưởng đến hiệu quả của shop
+   - Đánh giá mối quan hệ giữa:
+      + Hành vi shop (tốc độ phản hồi)
+      + Vị trí địa lý
+      + Ngành hàng
+   - Với các chỉ số kết quả:
+      + Rating
+      + Follower
+
+### 2. Lý do chọn Modeling mô tả
+   - Dữ liệu mang tính thống kê & quan sát
+   - Không có biến mục tiêu rõ ràng để dự đoán
+   - Mục tiêu chính là:
+      + So sánh
+      + Đánh giá xu hướng
+      + Rút ra insight
+### 3. Các kỹ thuật Modeling được sử dụng
+   - Correlation Analysis
+      + Đo lường mối quan hệ giữa (response_rate và rating_star)
+   - Group-based Aggregation
+      + Gom nhóm shop theo (Thành phố và Ngành hàng)
+      + Tính (Rating trung bình và Follower trung bình)
+   - Comparative Analysis
+      + So sánh kết quả giữa các nhóm
+      + Xác định nhóm nổi bật
+
+### 4. Kết quả
+* Tương quan giữa Tỉ lệ phản hồi vs Rating:
+  - Hệ số tương quan dương nhưng thấp
+  - Cho thấy:
+       + Phản hồi nhanh giúp cải thiện hình ảnh shop
+       + Nhưng không quyết định hoàn toàn rating
+-> Chất lượng sản phẩm/dịch vụ vẫn là yếu tố cốt lõi
+<img width="775" height="659" alt="Screenshot 2026-01-23 105426" src="https://github.com/user-attachments/assets/dce29d0f-010b-4818-acf2-d5bd5b73416b" />
+* So sánh theo khu vực
+  - Rating trung bình:
+       + Hà Nội ≈ TP.HCM ≈ 4,9
+  - Chênh lệch không đáng kể
+-> Địa điểm mở shop không tạo lợi thế rõ ràng về đánh giá (rating)
+<img width="961" height="555" alt="Screenshot 2026-01-23 105524" src="https://github.com/user-attachments/assets/fe91ce35-24fd-47aa-b1d7-8e6dd77e9eda" />
+*Phân tích theo ngành hàng
+   - Thời trang~61,900 follower
+   - Bán lẻ / Thương mại tổng hợp:~54,700 follower
+   - Không rõ ngành: ~33,400 follower
+-> Ngành hàng có ảnh hưởng mạnh đến khả năng thu hút người theo dõi
+
+### 5. Bài học và lời khuyên rút ra từ Modeling
+   - Mặt hàng là yếu tố ảnh hưởng mạnh nhất
+   - Tốc độ phản hồi chỉ hỗ trợ, không quyết định
+   - Vị trí địa lý không phải lợi thế cạnh tranh
